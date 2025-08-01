@@ -4,6 +4,7 @@ import com.codeOn.email_ai_reply.replyEmail.replyEmailModels.ResponseDTO;
 import com.codeOn.email_ai_reply.replyEmail.replyEmailModels.ReplyEmailRequest;
 import com.codeOn.email_ai_reply.replyEmail.services.EmailServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,6 @@ public class ReplyEmailController {
     public ResponseEntity<ResponseDTO> replyEmailwithAI(@RequestBody ReplyEmailRequest req) throws Exception {
         ResponseDTO response = new ResponseDTO();
         response.setEmailReply(emailServices.generateEmailReply(req));
-        return new ResponseEntity<>(response, HttpStatusCode.valueOf(OK));
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

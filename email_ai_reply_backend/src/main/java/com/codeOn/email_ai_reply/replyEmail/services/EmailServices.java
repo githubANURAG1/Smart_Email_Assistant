@@ -46,7 +46,9 @@ public class EmailServices {
         HttpEntity<Map<String,Map<String,Map<String,String>>>> entity = new HttpEntity<>(payload,headers);
         try{
             ResponseEntity<Map> response = restTemplate.exchange(uri, HttpMethod.POST,entity, Map.class);
-            return response.toString();
+            return response
+
+                    .toString();
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
