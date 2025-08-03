@@ -5,10 +5,6 @@ import lombok.Data;
 import java.util.ArrayList;
 
 @Data
-public class GeminiResponse {
-    ArrayList<Candidate> candidates;
-    String modelVersion;
-    String responseId;
+public class Content{
+    ArrayList<Part> parts;
 }
-
-

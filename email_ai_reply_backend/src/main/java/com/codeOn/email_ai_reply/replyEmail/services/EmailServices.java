@@ -2,17 +2,18 @@ package com.codeOn.email_ai_reply.replyEmail.services;
 
 import com.codeOn.email_ai_reply.replyEmail.replyEmailModels.GeminiResponse;
 import com.codeOn.email_ai_reply.replyEmail.replyEmailModels.ReplyEmailRequest;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+import java.util.Objects;
 
 
 @Service
@@ -20,7 +21,11 @@ public class EmailServices {
     @Autowired
     private RestTemplate restTemplate;
 
-     public String generateEmailReply(ReplyEmailRequest req) throws Exception {
+    @Autowired
+    private ObjectMapper objectMapper;
+
+
+    public String generateEmailReply(ReplyEmailRequest req) throws Exception {
         String prompt =framePrompt(req);
         String emailReply = generateEmailReplyUsingGemini(prompt);
         return emailReply;
@@ -45,14 +50,12 @@ public class EmailServices {
         headers.add("Content-Type","application/json");
         HttpEntity<Map<String,Map<String,Map<String,String>>>> entity = new HttpEntity<>(payload,headers);
         try{
-            ResponseEntity<Map> response = restTemplate.exchange(uri, HttpMethod.POST,entity, Map.class);
-            return response
-
-                    .toString();
+            String response= restTemplate.exchange(uri, HttpMethod.POST,entity, String.class).getBody();
+            GeminiResponse geminiResponse=objectMapper.readValue(response,GeminiResponse.class);
+            return geminiResponse.getCandidates().get(0).getContent().getParts().get(0).getText();
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
-
     }
 
     private String framePrompt(ReplyEmailRequest req) {
