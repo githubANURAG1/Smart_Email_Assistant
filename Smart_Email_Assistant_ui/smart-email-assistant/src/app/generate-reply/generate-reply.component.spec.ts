@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { GenerateReplyComponent } from './generate-reply.component';
+
 
 describe('GenerateReplyComponent', () => {
   let component: GenerateReplyComponent;
@@ -8,7 +8,7 @@ describe('GenerateReplyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GenerateReplyComponent]
+      imports: [GenerateReplyComponent ]
     })
     .compileComponents();
     

@@ -1,9 +1,24 @@
-<!-- <mat-form-field class="example-form-field">
-  <mat-label>Clearable input</mat-label>
-  <input matInput type="text" [(ngModel)]="value">
+<form #myForm="ngForm" (ngSubmit)="submitForm(myForm)" >
+    <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput name="name" ngModel required>
+  </mat-form-field>
 
-  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field> -->
-<p> this is generate reply</p>
+  <button type="submit" [disabled]="myForm.invalid">Submit</button>
+
+</form>
+
+
+<form #replyForm="ngForm">
+<mat-form-field>
+  <mat-label>Textarea</mat-label>
+  <textarea matInput
+  name="message"
+  [(ngModel)]="reply"
+  [readonly]="true"
+  ></textarea>
+  <mat-icon fontIcon="email"
+  ></mat-icon>
+</mat-form-field>
+
+</form>
