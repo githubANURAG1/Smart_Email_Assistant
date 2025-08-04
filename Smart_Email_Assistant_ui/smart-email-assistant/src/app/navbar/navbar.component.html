@@ -1,6 +1,11 @@
-<mat-tab-group class="tex1xl" mat-stretch-tabs="false" mat-align-tabs="center"  >
-    <mat-tab *ngFor="let i of menuList" label={{i}}>
-        <app-generate-reply *ngIf="i==='Generate Reply'"></app-generate-reply>
-        <app-home *ngIf="i==='Home'"></app-home>
+<mat-tab-group [(selectedIndex)]="selectedTabIndex" class="tex1xl" mat-stretch-tabs="false" mat-align-tabs="center">
+    <mat-tab label="Home">
+        <app-home (generateReply)="generateReplyTab()"></app-home>
+    </mat-tab>
+        <mat-tab label="Generate Reply">
+        <app-generate-reply ></app-generate-reply>
+    </mat-tab>
+    <mat-tab label="Contact Us">
+     <div></div>  
     </mat-tab>
 </mat-tab-group>

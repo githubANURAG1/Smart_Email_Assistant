@@ -12,5 +12,10 @@ import { HomeComponent } from '../home/home.component';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  selectedTabIndex:any;
+generateReplyTab() {
+  console.log("changing the tab to generate reply");
+  this.selectedTabIndex=1;
+}
   menuList:string[]=["Home","Generate Reply","Contact Us"];
 }

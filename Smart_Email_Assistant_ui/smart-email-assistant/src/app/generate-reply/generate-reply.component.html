@@ -1,24 +1,41 @@
-<form #myForm="ngForm" (ngSubmit)="submitForm(myForm)" >
-    <mat-form-field appearance="fill">
-    <mat-label>Name</mat-label>
-    <input matInput name="name" ngModel required>
-  </mat-form-field>
+<!-- <div class="container">
+  <form #myForm="ngForm" (ngSubmit)="submitForm(myForm)" class="flex flex-col">
+    <mat-form-field class="h-40 w-150">
+      <mat-label>Add Email</mat-label>
+      <input matInput name="name" ngModel required class="auto">
+    </mat-form-field>
+    <button mat-button color="primary" type="submit" [disabled]="myForm.invalid">Submit</button>
+  </form>
+  <form #replyForm="ngForm">
+    <mat-form-field class="h-100 w-150">
+      <mat-label>Email Reply</mat-label>
+      <textarea matInput name="message" [(ngModel)]="reply" [readonly]="true" class="auto"></textarea>
+      <mat-icon fontIcon="email"></mat-icon>
+    </mat-form-field>
+  </form>
+</div> -->
 
-  <button type="submit" [disabled]="myForm.invalid">Submit</button>
+<div class="max-w-xl mx-auto p-6 m-10 bg-zinc-700 rounded-lg shadow-md">
+  <!-- Email Form -->
+  <form #myForm="ngForm" (ngSubmit)="submitForm(myForm)" class="flex flex-col space-y-4 mb-6">
+    <div>
+      <label class="text-white block text-sm font-medium text-gray-700 mb-1">Add Email</label>
+      <input type="text" matInput name="name" ngModel required
+        class="text-black bg-gray-50 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </div>
+    <button type="submit" [disabled]="myForm.invalid" mat-button
+      class="self-start bg-purple-800 hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded-md transition duration-200 disabled:opacity-50">
+      Submit
+    </button>
+  </form>
 
-</form>
-
-
-<form #replyForm="ngForm">
-<mat-form-field>
-  <mat-label>Textarea</mat-label>
-  <textarea matInput
-  name="message"
-  [(ngModel)]="reply"
-  [readonly]="true"
-  ></textarea>
-  <mat-icon fontIcon="email"
-  ></mat-icon>
-</mat-form-field>
-
-</form>
+  <!-- Email Reply Form -->
+  <form #replyForm="ngForm" class="flex flex-col space-y-4">
+    <div class="relative">
+      <label class="text-white block text-sm font-medium text-gray-700 mb-1">Email Reply</label>
+      <textarea matInput name="message" [(ngModel)]="reply" [readonly]="true" rows="6"
+        class=" text-black w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50"></textarea>
+      <mat-icon fontIcon="email" class="absolute bottom-2 right-3 text-gray-400 text-lg pointer-events-none"></mat-icon>
+    </div>
+  </form>
+</div>

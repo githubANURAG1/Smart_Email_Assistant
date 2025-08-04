@@ -17,7 +17,6 @@ export class GenerateReplyComponent {
   constructor(private http: HttpClient) {}
 reply: any;
 ngOnInit(){
-  this.reply="this is the reply";
 
 }
 
@@ -35,7 +34,6 @@ submitForm(form: NgForm) {
   });
 console.log(form.value.name);
 }
-
 
 generateReply(form: NgForm) {
   this.reply=form.value.name;
