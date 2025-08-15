@@ -1,5 +1,5 @@
 # ---------- Stage 1: Build ----------
-FROM maven:3.9.6-eclipse-temurin-17 AS build
+    FROM maven:3.9.6-eclipse-temurin-17 AS build
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ FROM eclipse-temurin:17
 WORKDIR /app
 
 # Copy only the jar from the build stage
-COPY target/email_ai_reply-0.0.1-SNAPSHOT.jar /app/email_ai_reply
+COPY --from=build /app/target/email_ai_reply-0.0.1-SNAPSHOT.jar /app/email_ai_reply.jar
 
 # Run the app
 ENTRYPOINT ["java", "-jar", "email_ai_reply.jar"]
