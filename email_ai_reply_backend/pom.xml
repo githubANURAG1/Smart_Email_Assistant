@@ -12,7 +12,7 @@
 	<artifactId>email_ai_reply</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>email_ai_reply</name>
-	<description>Project to create extension for gmail that helps ai reply</description>
+	<description>Project to create extension for gmail that helps AI reply</description>
 	<url/>
 	<licenses>
 		<license/>
