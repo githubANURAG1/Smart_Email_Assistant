@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import {MatTabsModule} from '@angular/material/tabs';
 import { GenerateReplyComponent } from "../generate-reply/generate-reply.component";
 import { HomeComponent } from '../home/home.component';
+import { ContactUsComponent } from '../contact-us/contact-us.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, MatTabsModule, GenerateReplyComponent,HomeComponent],
+  imports: [CommonModule, MatTabsModule, GenerateReplyComponent,HomeComponent, ContactUsComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })

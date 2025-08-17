@@ -4,7 +4,7 @@ import { FormsModule, NgForm} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { ResponseDTO } from '../models/ResponseDTO';
+import { ResponseDTO } from '../models/responseDTO';
 
 @Component({
   selector: 'app-generate-reply',
@@ -21,7 +21,7 @@ ngOnInit(){
 }
 
 submitForm(form: NgForm) {
-  this.http.post<ResponseDTO>('http://localhost:8080/replyEmail/replyEmailwithAI', {
+  this.http.post<ResponseDTO>('https://email-ai-reply-backend.onrender.com/replyEmail/replyEmailwithAI', {
     //"emailBody": "hello, anurag this side, the meeting today went really well. looking forward to close the dea Thanks, Anurag rai",
     "emailBody": form.value.name,
     "tone": "submissive",
@@ -39,6 +39,13 @@ generateReply(form: NgForm) {
   this.reply=form.value.name;
   
 console.log(form.value);
+}
+
+copyToClipboard(){
+  console.log("copy to clipboard clicked:"+ this.reply);
+  if(this.reply!=undefined){
+  navigator.clipboard.writeText(this.reply);
+  }
 }
 }
 
